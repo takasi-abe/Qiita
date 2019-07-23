@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Qiita</string>
+
+
+    <string name="date"/>
+    <string name="user_name"/>
+    <string name="title"/>
+</resources>
