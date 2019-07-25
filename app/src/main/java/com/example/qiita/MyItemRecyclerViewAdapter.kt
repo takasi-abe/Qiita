@@ -40,7 +40,7 @@ class MyItemRecyclerViewAdapter(
         val item = mValues[position]
         holder.titleView.text = item.title
         holder.dateView.text = item.date
-        holder.userNameView.text = item.userName
+        holder.userNameView.text = item.user.userName
 
         with(holder.mView) {
             tag = item

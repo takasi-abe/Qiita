@@ -37,4 +37,12 @@ dependencies {
 
     //OkHttp3を追加
     implementation("com.squareup.okhttp3:okhttp:4.0.1")
+
+    //Moshiを追加
+    implementation group: 'com.squareup.moshi', name: 'moshi', version: '1.8.0'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.8.0'
+
+    //retrofitを追加
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation 'com.squareup.retrofit2:converter-moshi:2.3.0'
 }
