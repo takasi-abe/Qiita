@@ -7,9 +7,15 @@ import retrofit2.http.Query
 
 class ArticleItemService {
 
-    interface ItemService {
+
+    /**
+     * Qiita APIで記事を新着順に取得するためのインターフェース
+     * @Query page ページ番号
+     * @Query per_page 1ページあたりの要素数
+     */
+    interface ArticleService {
         @GET("items")
-        fun items(
+        fun articles(
             @Query("page") page: Int,
             @Query("par_page") perPage: Int
         ): Call<List<ArticleItems>>

@@ -1,6 +1,5 @@
 package com.example.qiita
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -51,7 +50,7 @@ class ItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = list
+        val recyclerView = articleList
 //        val adapter = MyItemRecyclerViewAdapter(ArticleItems.,listener)
 
         recyclerView.setHasFixedSize(true)
