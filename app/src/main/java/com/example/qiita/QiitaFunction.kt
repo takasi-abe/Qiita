@@ -17,18 +17,22 @@ class QiitaFunction {
     private var articleItemService: ArticleItemService.ArticleService
 
     init {
+        //OkHttpをクライアントとしてビルド
         var client = OkHttpClient.Builder().build()
 
+        //Moshiをコンバーターとしてビルド
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
 
+        //Retrofitをビルド
         val retrofit = Retrofit.Builder()
             .baseUrl("https://qiita.com/api/v2/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .client(client)
             .build()
 
+        //記事を取得する際の条件の指定
         articleItemService = retrofit.create(ArticleItemService.ArticleService::class.java)
         Log.d("QiitaFunction", "Init")
     }
@@ -38,14 +42,17 @@ class QiitaFunction {
      * レスポンスが帰ってこなかった場合エラーを表示(onFailure)
      */
     fun getArticleList(callback: (List<ArticleItems>) -> Unit) {
-        articleItemService.articles(page = 1, perPage = 20).enqueue(object : Callback<List<ArticleItems>> {
+        articleItemService.articles(page = 1, perPage = 2).enqueue(object : Callback<List<ArticleItems>> {
 
 
             //レスポンスが帰ってきた場合
             override fun onResponse(call: Call<List<ArticleItems>>, response: Response<List<ArticleItems>>) {
                 response?.let {
+
+                    //レスポンスが正しく帰ってきた場合
                     if (response.isSuccessful) {
                         Log.d("getArticleList", "onResponce")
+
                         response.body()?.let {
                             callback(it)
                         }
@@ -53,7 +60,7 @@ class QiitaFunction {
                 }
             }
 
-
+            //レスポンスが帰ってこなかった場合
             override fun onFailure(call: Call<List<ArticleItems>>, t: Throwable) {
 //                callError()
                 Log.d("getArticleList", "onFailure")

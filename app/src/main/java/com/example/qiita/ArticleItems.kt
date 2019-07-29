@@ -13,8 +13,10 @@ data class ArticleItems (
     val date: String,
 
     @Json(name = "user") // 記事の著者
-    val user: User
+    val user: User,
 
+    @Json(name = "url") //記事のURL
+    val url: String
 
 )
 
